@@ -53,21 +53,5 @@ if (form) {
   });
 }
 
-// ===== Handle dropdowns on mobile (tap instead of hover) =====
-document.querySelectorAll("nav ul li").forEach(item => {
-  const submenu = item.querySelector("ul");
-  if (submenu) {
-    item.addEventListener("click", (e) => {
-      if (window.innerWidth <= 768) {  // Only on mobile
-        e.preventDefault();
-        item.classList.toggle("open"); // Toggle submenu
-      }
-    });
-  }
-});
-
-
-
-
 
 
