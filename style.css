@@ -259,6 +259,26 @@ nav .brand-name {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Hide submenus by default */
+nav ul li ul {
+  display: none;
+}
+
+/* Show on hover (desktop) */
+nav ul li:hover > ul {
+  display: block;
+}
+
+/* Show when tapped (mobile JS adds .open) */
+nav ul li.open > ul {
+  display: block;
+}
+
 
 
 
