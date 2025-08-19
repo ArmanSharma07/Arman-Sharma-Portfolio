@@ -278,6 +278,33 @@ nav ul li:hover > ul {
 nav ul li.open > ul {
   display: block;
 }
+/* Dropdown base */
+nav ul li {
+  position: relative; /* anchor for dropdown */
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;          /* directly below parent */
+  left: 0;            /* aligned to left corner */
+  background: #222;   /* adjust as per theme */
+  padding: 10px 0;
+  border-radius: 5px;
+  z-index: 999;       /* stay above other elements */
+  min-width: 180px;   /* consistent width */
+}
+
+/* Show dropdown on hover (desktop) */
+nav ul li:hover > ul {
+  display: block;
+}
+
+/* Show dropdown on mobile when .open class is added */
+nav ul li.open > ul {
+  display: block;
+}
+
 
 
 
