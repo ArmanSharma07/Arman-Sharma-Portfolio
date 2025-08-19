@@ -273,8 +273,7 @@ nav ul li:hover > ul {
 /* Show when tapped (mobile JS adds .open) */
 nav ul li.open > ul {
   display: block;
-
-
+}
 
 
 
