@@ -1,34 +1,32 @@
-/* ===== Global Styles ===== */
+/* ===== Global Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 body {
+  font-family: Arial, sans-serif;
   line-height: 1.6;
   background: #f9f9f9;
-  color: #222;
+  color: #333;
 }
 
 /* ===== Navbar ===== */
-nav, header nav {
-  background: linear-gradient(135deg, #0077ff, #00d4ff);
-  padding: 15px 30px;
+nav {
+  background: #0077ff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position : sticky;
-  z-index : 1000;
-  top : 0;
+  justify-content: space-between;
 }
 
-
-nav h1, .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+nav h1 {
   color: #fff;
+  font-size: 1.5rem;
 }
 
 nav ul {
@@ -37,273 +35,172 @@ nav ul {
   gap: 20px;
 }
 
-nav ul li, header nav a {
-  display: inline-block;
+nav ul li {
+  position: relative;
 }
 
-nav a, header nav a {
-  text-decoration: none;
+nav ul li a {
   color: #fff;
-  font-weight: 500;
-  transition: 0.3s ease;
-  padding: 6px 12px;
-  border-radius: 6px;
+  text-decoration: none;
+  padding: 8px 12px;
+  display: block;
+  transition: background 0.3s;
 }
 
-nav a:hover, header nav a:hover,
-nav a.active, header nav a.active {
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* ===== Dropdown Base ===== */
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #222;
+  padding: 10px 0;
+  border-radius: 5px;
+  z-index: 9999;
+  min-width: 180px;
+}
+
+nav ul li ul li a {
+  color: #fff;
+  padding: 10px 15px;
+}
+
+nav ul li ul li a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Hero Section ===== */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  animation: fadeIn 1.2s ease-in;
+/* ===== Desktop: show on hover ===== */
+@media (min-width: 769px) {
+  nav ul li:hover > ul {
+    display: block;
+  }
 }
 
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #004aad;
-}
+/* ===== Mobile Menu ===== */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
 
-.hero p {
-  font-size: 1.2rem;
-  color: #333;
-  max-width: 700px;
-  margin: 0 auto;
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    background: #0077ff;
+    display: none;
+    padding: 10px 0;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Mobile Submenu */
+  nav ul li ul {
+    position: relative;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    background: #005fcc;
+    padding: 5px 0;
+  }
+
+  nav ul li.show-sub > ul {
+    display: block;
+  }
+
+  nav ul li ul li a {
+    padding: 12px 40px;
+  }
 }
 
 /* ===== Sections ===== */
-.section, .page-section {
+section {
   padding: 60px 20px;
-  text-align: center;
+  max-width: 1100px;
+  margin: auto;
 }
 
-.section h2, .page-section h1 {
+section h2 {
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 2rem;
-  margin-bottom: 25px;
-  color: #004aad;
+  color: #0077ff;
+}
+
+section p {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* ===== Cards ===== */
-.card-container, .concerns-grid {
-  display: grid;
-  gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-.card, .concern-card {
+.card {
   background: #fff;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
 }
 
-.card:hover, .concern-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+.card:hover {
+  transform: translateY(-5px);
 }
 
-.card h3, .concern-card h3 {
-  color: #0077ff;
-  margin-bottom: 12px;
+/* ===== Contact Form ===== */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* ===== Buttons ===== */
-.btn, button {
-  display: inline-block;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact-form button {
   background: #0077ff;
   color: #fff;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s ease;
-  font-weight: 500;
   border: none;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
-.btn:hover, button:hover {
-  background: #005bb5;
-}
-
-/* ===== Contact Page ===== */
-.contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-left: 20px;
-
-}
-
-.contact-form {
-  flex: 1;
-  min-width: 280px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form input, .contact-form textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.contact-info {
-  flex: 1;
-  min-width: 250px;
-  text-align: left;
-  background: #f1faff;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.contact-info h3 {
-  margin-bottom: 15px;
-  color: #004aad;
+.contact-form button:hover {
+  background: #005fcc;
 }
 
 /* ===== Footer ===== */
 footer {
-  background: #004aad;
+  background: #0077ff;
   color: #fff;
   text-align: center;
-  padding: 18px;
-  margin-top: 50px;
+  padding: 20px;
+  margin-top: 40px;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== Responsive ===== */
-@media(max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    background: #0077ff;
-    position: absolute;
-    top: 65px;
-    right: -100%;
-    width: 200px;
-    transition: right 0.4s ease;
-    padding: 20px;
-    border-radius: 0 0 10px 10px;
-  }
-
-  nav ul.show {
-    right: 0;
-  }
-
-  nav h1, .logo {
-    font-size: 1.2rem;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
-  }
-}
-
-/* Navbar specific adjustment */
-nav .brand-name {
-  margin-right: auto; /* Push menu items to right */
-  padding-left: 15px;
-}
-
-/* Hero specific adjustment */
-.hero .brand-name {
-  font-size: 2.2rem;  /* Bigger in hero section */
-  display: inline-block;
-  margin-bottom: 10px;
-}
-/* Dropdown styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropbtn {
-  cursor: pointer;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: white;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
-
-.dropdown-content a:hover {
-  background: #f0f0f0;
-}
-
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Hide submenus by default */
-nav ul li ul {
-  display: none;
-}
-
-/* Show on hover (desktop) */
-nav ul li:hover > ul {
-  display: block;
-}
-
-/* Show when tapped (mobile JS adds .open) */
-nav ul li.open > ul {
-  display: block;
-}
-/* Dropdown base */
-nav ul li {
-  position: relative; /* anchor for dropdown */
-}
-
-nav ul li ul {
-  display: none;
-  position: absolute;
-  top: 100%;          /* directly below parent */
-  left: 0;            /* aligned to left corner */
-  background: #222;   /* adjust as per theme */
-  padding: 10px 0;
-  border-radius: 5px;
-  z-index: 999;       /* stay above other elements */
-  min-width: 180px;   /* consistent width */
-}
-
-/* Show dropdown on hover (desktop) */
-nav ul li:hover > ul {
-  display: block;
-}
-
-/* Show dropdown on mobile when .open class is added */
-nav ul li.open > ul {
-  display: block;
-}
 
 
 
