@@ -11,6 +11,16 @@ navToggleBtn.addEventListener("click", () => {
   nav.classList.toggle("show");
 });
 
+// ===== Close nav on submenu click (mobile fix) =====
+document.querySelectorAll("nav ul li a").forEach(link => {
+  link.addEventListener("click", () => {
+    // Only close if menu is open (mobile mode)
+    if (nav.classList.contains("show")) {
+      nav.classList.remove("show");
+    }
+  });
+});
+
 // ===== Smooth Scroll =====
 document.querySelectorAll("a[href^='#']").forEach(anchor => {
   anchor.addEventListener("click", function(e) {
@@ -30,4 +40,5 @@ if (form) {
     form.reset();
   });
 }
+
 
